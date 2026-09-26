@@ -1,0 +1,147 @@
+/* ===== EcoScan About Us page ===== */
+/* Reuses .hero__eyebrow, .about__title, .about__lead, .about__badge-lg,
+   .about__point from Hero.css / about.css — make sure those are already
+   in src/style/index.css before using this page. */
+
+.aboutus {
+  background: var(--background);
+}
+
+/* ---- Header ---- */
+
+.aboutus__header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 96px 24px 64px;
+  text-align: left;
+}
+
+.aboutus__title {
+  margin: 24px 0 18px;
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.aboutus__lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+/* ---- Mission (reuses about__* look) ---- */
+
+.aboutus__mission {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 40px 24px 96px;
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.aboutus__mission-visual {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---- Steps ---- */
+
+.aboutus__steps {
+  background: var(--surface);
+  padding: 80px 24px;
+}
+
+.aboutus__section-title {
+  max-width: var(--container-width);
+  margin: 0 auto 40px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.aboutus__steps-grid {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.aboutus__step {
+  position: relative;
+  background: var(--surface-dark);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--primary);
+}
+
+.aboutus__step-num {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--border-hover);
+}
+
+.aboutus__step b {
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.aboutus__step p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* ---- Values (reuses .about__point) ---- */
+
+.aboutus__values {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 80px 24px 96px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* ---- Mobile ---- */
+
+@media (max-width: 860px) {
+  .aboutus__header {
+    padding: 64px 20px 48px;
+  }
+
+  .aboutus__title {
+    font-size: 32px;
+  }
+
+  .aboutus__mission,
+  .aboutus__steps-grid,
+  .aboutus__values {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutus__mission {
+    padding: 24px 20px 64px;
+  }
+
+  .aboutus__steps {
+    padding: 56px 20px;
+  }
+
+  .aboutus__values {
+    padding: 56px 20px 72px;
+  }
+}

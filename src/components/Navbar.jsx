@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Menu,
   X,
@@ -12,11 +13,28 @@ import logoLight from "../assets/logo.png";
 import logoDark from "../assets/logo-dark.png";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/" },
   { label: "Features", href: "#features" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "#contact" },
 ];
+
+// "/" ile başlayanlar ayrı səhifədir (react-router), "#" ile başlayanlar
+// eyni səhifə daxilindəki bölmələrdir (adi <a> anchor).
+function NavLink({ href, children, onClick, className }) {
+  if (href.startsWith("/")) {
+    return (
+      <Link to={href} onClick={onClick} className={className}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} onClick={onClick} className={className}>
+      {children}
+    </a>
+  );
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,18 +72,18 @@ export default function Navbar() {
       <nav className="navbar__inner">
 
         {/* Logo */}
-        <a href="#home" className="navbar__logo">
+        <Link to="/" className="navbar__logo">
           <img
             src={isDark ? logoDark : logoLight}
             alt="YaşılSkan"
           />
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <ul className="navbar__links">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a href={link.href}>{link.label}</a>
+              <NavLink href={link.href}>{link.label}</NavLink>
             </li>
           ))}
         </ul>
@@ -121,12 +139,9 @@ export default function Navbar() {
         <ul className="navbar__mobile-links">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-              >
+              <NavLink href={link.href} onClick={() => setIsOpen(false)}>
                 {link.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
