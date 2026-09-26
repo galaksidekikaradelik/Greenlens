@@ -1,40 +1,50 @@
 :root {
+  /* Primary Colors */
   --primary: #2E7D32;
   --primary-light: #4CAF50;
   --primary-dark: #1B5E20;
 
+  /* Secondary */
   --secondary: #00C853;
   --accent: #AEEA00;
 
+  /* Backgrounds */
   --background: #F4F8F4;
   --surface: #FFFFFF;
   --surface-dark: #E8F5E9;
 
+  /* Text */
   --text-primary: #1B1B1B;
   --text-secondary: #5F6B61;
   --text-light: #FFFFFF;
 
+  /* Status Colors */
   --success: #22C55E;
   --warning: #FACC15;
   --error: #EF4444;
   --info: #3B82F6;
 
+  /* Borders */
   --border: #DCE5DC;
   --border-hover: #B8C8B8;
 
+  /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
 
+  /* Radius */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-xl: 32px;
 
+  /* Transition */
   --transition: all 0.3s ease;
 
+  /* Container */
   --container-width: 1200px;
 
+  /* Font */
   --font-main: "Inter", sans-serif;
 }
-
