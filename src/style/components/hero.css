@@ -1,177 +1,192 @@
-.hero {
-  position: relative;
-  padding: 80px 0 56px;
-  overflow: hidden;
-}
+/* ===== EcoScan Hero ===== */
+/* Uses the design tokens from your :root / :root.dark variables file. */
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -160px;
-  right: -160px;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(174, 234, 0, 0.18), transparent 70%);
-  pointer-events: none;
+.hero {
+  background: var(--background);
+  padding: 96px 24px;
+  transition: var(--transition);
 }
 
 .hero__inner {
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 28px;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
   align-items: center;
-  position: relative;
 }
+
+/* ---- Left column ---- */
 
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-main);
-  font-size: 0.85rem;
-  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
   color: var(--primary);
-  margin-bottom: 18px;
-}
-
-.hero__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .hero__title {
-  font-family: var(--font-main);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  margin: 24px 0 20px;
+  font-size: 48px;
   line-height: 1.1;
-  max-width: 12ch;
+  font-weight: 700;
   color: var(--text-primary);
-  margin: 0;
+  letter-spacing: -0.01em;
 }
 
 .hero__lead {
-  margin-top: 20px;
-  font-family: var(--font-main);
-  font-size: 1.08rem;
-  max-width: 42ch;
+  max-width: 480px;
+  font-size: 17px;
+  line-height: 1.65;
   color: var(--text-secondary);
 }
 
 .hero__ctas {
   display: flex;
-  gap: 14px;
-  margin-top: 32px;
   flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 11px 22px;
-  border-radius: 100px;
-  font-family: var(--font-main);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
+  padding: 13px 26px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 500;
   text-decoration: none;
   transition: var(--transition);
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
 }
 
 .btn--primary {
   background: var(--primary);
   color: var(--text-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-md);
 }
 
 .btn--outline {
-  background: var(--surface);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--border-hover);
 }
 
+.btn--outline:hover {
+  border-color: var(--primary);
+}
+
+/* ---- Right column: demo card ---- */
+
 .hero__card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 22px;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  background: var(--surface-dark);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px 32px;
+  box-shadow: var(--shadow-md);
+}
+
+/* viewfinder corners, echoing the logo mark */
+.hero__card::before,
+.hero__card::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--primary);
+}
+
+.hero__card::before {
+  top: 14px;
+  left: 14px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: var(--radius-sm) 0 0 0;
+}
+
+.hero__card::after {
+  bottom: 14px;
+  right: 14px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 var(--radius-sm) 0;
 }
 
 .hero__card-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-main);
-  font-size: 0.78rem;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .hero__choices {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .hero__choice {
-  background: var(--surface-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 18px 14px;
-  text-align: left;
+  padding: 18px;
   color: var(--primary);
   transition: var(--transition);
 }
 
 .hero__choice:hover {
   border-color: var(--border-hover);
+  box-shadow: var(--shadow-sm);
 }
 
 .hero__choice b {
-  display: block;
-  font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin: 10px 0 4px;
-  color: var(--primary-dark);
+  font-size: 15px;
+  color: var(--text-primary);
 }
 
 .hero__choice span {
-  font-family: var(--font-main);
-  font-size: 0.78rem;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 
 .hero__badge {
-  position: absolute;
-  bottom: -16px;
-  right: 22px;
-  background: var(--accent);
-  color: var(--primary-dark);
-  font-family: var(--font-main);
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 100px;
-  box-shadow: var(--shadow-sm);
+  margin-top: 20px;
+  font-size: 13.5px;
+  color: var(--primary);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  text-align: center;
 }
 
-@media (max-width: 900px) {
+/* ---- Mobile ---- */
+
+@media (max-width: 860px) {
+  .hero {
+    padding: 64px 20px;
+  }
+
   .hero__inner {
     grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero__title {
+    font-size: 36px;
   }
 }
