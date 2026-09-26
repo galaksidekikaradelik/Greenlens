@@ -1,0 +1,106 @@
+/* ===== EcoScan Contact ===== */
+/* Reuses .hero__eyebrow, .about__title, .about__lead, .btn, .btn--primary
+   from hero.css / about.css — keep those imported before this file. */
+
+.contact {
+  background: var(--surface);
+  padding: 96px 24px;
+}
+
+.contact__inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ---- Left: copy + info ---- */
+
+.contact__info {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact__info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.contact__info-item svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ---- Right: form ---- */
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--surface-dark);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.contact__field input,
+.contact__field textarea {
+  font: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--text-primary);
+  transition: var(--transition);
+  resize: vertical;
+}
+
+.contact__field input:focus,
+.contact__field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.contact__submit {
+  align-self: flex-start;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.contact__success {
+  font-size: 14px;
+  color: var(--primary);
+}
+
+/* ---- Mobile ---- */
+
+@media (max-width: 860px) {
+  .contact {
+    padding: 64px 20px;
+  }
+
+  .contact__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact__form {
+    padding: 24px;
+  }
+}

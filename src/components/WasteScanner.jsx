@@ -1,34 +1,90 @@
-import { Recycle } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ScannerUpload from "../components/ScannerUpload";
-import "../style/pages/scanner.css";
+import { useRef, useState } from "react";
+import { Recycle, Upload, X, Sparkles } from "lucide-react";
+import "../style/components/scanner.css";
 
 export default function WasteScanner() {
-  const handleAnalyze = async () => {
-    // TODO: burada AI analiz API çağırışı ediləcək
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+  const fileInputRef = useRef(null);
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files?.[0];
+
+    if (!file) return;
+
+    const imageUrl = URL.createObjectURL(file);
+    setImage(imageUrl);
+  };
+
+  const removeImage = () => {
+    setImage(null);
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   return (
-    <div className="app">
-      <Navbar />
-      <main>
-        <section className="scanner-page">
-          <div className="scanner-page__inner">
-            <div className="scanner-page__icon">
-              <Recycle size={26} strokeWidth={1.8} />
-            </div>
-            <h1>Tullantı Skaneri</h1>
-            <p>Tullantının şəklini qalereyadan seç, növünü və düzgün qutunu öyrən.</p>
-            <ScannerUpload
-              accentLabel="JPG, PNG — maks. 10MB"
-              onAnalyze={handleAnalyze}
-            />
+    <section className="scanner" id="waste">
+      <div className="scanner__inner">
+        <div className="scanner__header">
+          <div className="scanner__icon">
+            <Recycle size={26} />
           </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+
+          <span>TULLANTI SKANERİ</span>
+
+          <h2>Tullantını tanıyaq.</h2>
+
+          <p>
+            Tullantının şəklini qalereyadan seç və onun hansı material
+            olduğunu öyrən.
+          </p>
+        </div>
+
+        <div className="scanner__box">
+          {!image ? (
+            <button
+              className="scanner__upload"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <div className="scanner__upload-icon">
+                <Upload size={28} />
+              </div>
+
+              <strong>Şəkil seç</strong>
+
+              <span>Qalereyadan tullantı şəklini seç</span>
+            </button>
+          ) : (
+            <div className="scanner__preview">
+              <img src={image} alt="Seçilmiş tullantı" />
+
+              <button
+                className="scanner__remove"
+                onClick={removeImage}
+                aria-label="Şəkli sil"
+              >
+                <X size={18} />
+              </button>
+            </div>
+          )}
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            hidden
+          />
+
+          {image && (
+            <button className="scanner__analyze">
+              <Sparkles size={18} />
+              Analiz et
+            </button>
+          )}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -19,16 +19,23 @@ export default function Features() {
       <div className="features__inner">
         <div className="features__head">
           <h2>İki skan, tək məqsəd</h2>
-          <p>Kamerandan başqa heç nəyə ehtiyacın yoxdur.</p>
+          <p>Kamerandan və ya qalereyandan şəkil seç, analizə başla.</p>
         </div>
 
         <div className="features__grid">
+          {/* TULLANTI */}
           <div className="feature-card">
             <div className="feature-card__icon">
               <Recycle size={22} strokeWidth={1.8} />
             </div>
+
             <h3>Tullantı Skaneri</h3>
-            <p>Şəkil çək, material növünü öyrən, düzgün qutuya at.</p>
+
+            <p>
+              Tullantının şəklini seç, material növünü müəyyən et və düzgün
+              qutu haqqında məlumat al.
+            </p>
+
             <ul className="feature-card__list">
               {WASTE_POINTS.map((point) => (
                 <li key={point}>
@@ -37,17 +44,25 @@ export default function Features() {
                 </li>
               ))}
             </ul>
+
             <a href="#waste" className="feature-card__link">
-              Tullantını sına →
+              Tullantını skan et →
             </a>
           </div>
 
+          {/* BITKI */}
           <div className="feature-card">
             <div className="feature-card__icon">
               <Leaf size={22} strokeWidth={1.8} />
             </div>
+
             <h3>Bitki Skaneri</h3>
-            <p>Yarpağı çərçivəyə al, ani sağlamlıq hesabatı al.</p>
+
+            <p>
+              Bitkinin şəklini qalereyadan seç və onun sağlamlığı haqqında
+              süni intellekt əsaslı analiz al.
+            </p>
+
             <ul className="feature-card__list">
               {PLANT_POINTS.map((point) => (
                 <li key={point}>
@@ -56,8 +71,9 @@ export default function Features() {
                 </li>
               ))}
             </ul>
+
             <a href="#plant" className="feature-card__link">
-              Bitkini sına →
+              Bitkini skan et →
             </a>
           </div>
         </div>
