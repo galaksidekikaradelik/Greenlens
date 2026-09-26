@@ -1,26 +1,8 @@
 import "./style/index.css";
-import Navbar from "../src/components/Navbar";
-import Hero from "../src/components/Hero";
-import Features from "../src/components/Features";
-import HowItWorks from "../src/components/HowItWork";
-import Impact from "../src/components/Impact";
-import Stats from "../src/components/Stats";
+import Home from "./pages/Home";
 
 function App() {
-  return (
-    <div className="app">
-      <Navbar />
-
-      <main>
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <Impact />
-        <Stats />
-        {/* About, Contact bölmələri buraya əlavə olunacaq */}
-      </main>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;

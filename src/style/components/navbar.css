@@ -2,31 +2,19 @@
   position: sticky;
   top: 0;
   z-index: 30;
-
   border-bottom: 1px solid var(--border);
-
-  background: color-mix(
-    in srgb,
-    var(--surface) 85%,
-    transparent
-  );
-
-  backdrop-filter: blur(10px);
-
+  background: var(--surface);
   transition: var(--transition);
 }
 
 .navbar__inner {
   max-width: var(--container-width);
   margin: 0 auto;
-
   padding: 16px 28px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 
 /* =========================
    LOGO
@@ -36,7 +24,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-
   text-decoration: none;
 }
 
@@ -46,7 +33,6 @@
   display: block;
 }
 
-
 /* =========================
    DESKTOP LINKS
 ========================= */
@@ -55,7 +41,6 @@
   display: flex;
   align-items: center;
   gap: 32px;
-
   list-style: none;
   margin: 0;
   padding: 0;
@@ -63,21 +48,18 @@
   font-family: var(--font-main);
   font-size: 0.875rem;
   font-weight: 500;
-
   color: var(--text-secondary);
 }
 
 .navbar__links a {
   text-decoration: none;
   color: inherit;
-
   transition: var(--transition);
 }
 
 .navbar__links a:hover {
   color: var(--primary);
 }
-
 
 /* =========================
    RIGHT ACTIONS
@@ -88,7 +70,6 @@
   align-items: center;
   gap: 10px;
 }
-
 
 /* =========================
    THEME TOGGLE
@@ -111,7 +92,6 @@
   color: var(--text-primary);
 
   cursor: pointer;
-
   transition: var(--transition);
 }
 
@@ -120,7 +100,6 @@
   border-color: var(--primary);
   transform: translateY(-1px);
 }
-
 
 /* =========================
    CTA
@@ -144,10 +123,9 @@
   font-weight: 600;
 
   text-decoration: none;
-
   border: none;
-  cursor: pointer;
 
+  cursor: pointer;
   transition: var(--transition);
 }
 
@@ -155,7 +133,6 @@
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
-
 
 /* =========================
    MOBILE TOGGLE
@@ -173,7 +150,6 @@
   padding: 4px;
 }
 
-
 /* =========================
    MOBILE MENU
 ========================= */
@@ -182,7 +158,6 @@
   display: none;
 
   border-top: 1px solid var(--border);
-
   background: var(--surface);
 
   padding: 16px 28px;
@@ -223,9 +198,8 @@
   justify-content: center;
 }
 
-
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
 @media (max-width: 768px) {
@@ -258,7 +232,6 @@
   }
 }
 
-
 /* =========================
    REDUCED MOTION
 ========================= */
@@ -270,3 +243,4 @@
     transition: none;
   }
 }
+
