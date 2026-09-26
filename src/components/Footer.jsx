@@ -26,7 +26,7 @@ export default function Footer() {
       <div className="footer__inner">
         <div className="footer__grid">
           <div className="footer__col footer__col--brand">
-            <span className="footer__brand">YaşılSkan</span>
+            <span className="footer__brand">EcoScan</span>
 
             <p>
               Gənclər üçün tullantını və bitki sağlamlığını bir platformada

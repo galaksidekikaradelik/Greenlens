@@ -4,17 +4,17 @@ import "../style/components/how-it-works.css";
 const STEPS = [
   {
     icon: Camera,
-    title: "01. Capture",
+    title: "01. Şəklini çəkin",
     text: "Tullantını ya da bitkini kadra al.",
   },
   {
     icon: Sparkles,
-    title: "02. AI Analysis",
+    title: "02. AI ilə analiz edin",
     text: "Süni intellekt şəkli qabaqcıl modellərlə analiz edir.",
   },
   {
     icon: ClipboardCheck,
-    title: "03. Get Guidance",
+    title: "03. Düzgün bilgi alın",
     text: "Aydın, tətbiq edilə bilən tövsiyə göstərilir.",
   },
 ];
@@ -24,8 +24,8 @@ export default function HowItWorks() {
     <section className="how" id="how">
       <div className="how__inner">
         <div className="how__head">
-          <h2>How It Works</h2>
-          <p>Three simple steps. A bigger impact.</p>
+          <h2>Necə işləyir</h2>
+          <p>Üç sadə addım. Böyük təsir.</p>
         </div>
 
         <div className="how__steps">

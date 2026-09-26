@@ -14,18 +14,6 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-function NavLink({ href, children, onClick, className }) {
-  return (
-    <Link
-      to={href}
-      onClick={onClick}
-      className={className}
-    >
-      {children}
-    </Link>
-  );
-}
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -63,6 +51,7 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <nav className="navbar__inner">
+
         {/* Logo */}
         <Link
           to="/"
@@ -75,20 +64,24 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop links */}
+        {/* Desktop navigation */}
         <ul className="navbar__links">
           {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <NavLink href={link.href}>
+            <li key={link.href}>
+              <Link
+                to={link.href}
+                onClick={closeMenu}
+              >
                 {link.label}
-              </NavLink>
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* Right actions */}
         <div className="navbar__actions">
-          {/* Theme toggle */}
+
+          {/* Theme */}
           <button
             type="button"
             className="navbar__theme-toggle"
@@ -100,21 +93,28 @@ export default function Navbar() {
             }
           >
             {isDark ? (
-              <Sun size={19} strokeWidth={2} />
+              <Sun
+                size={19}
+                strokeWidth={2}
+              />
             ) : (
-              <Moon size={19} strokeWidth={2} />
+              <Moon
+                size={19}
+                strokeWidth={2}
+              />
             )}
           </button>
 
-          {/* CTA */}
+          {/* Başla → Register */}
           <Link
-            to="/features"
+            to="/register"
             className="navbar__cta"
+            onClick={closeMenu}
           >
             Başla <span>→</span>
           </Link>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu */}
           <button
             type="button"
             className="navbar__toggle"
@@ -143,19 +143,20 @@ export default function Navbar() {
       >
         <ul className="navbar__mobile-links">
           {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <NavLink
-                href={link.href}
+            <li key={link.href}>
+              <Link
+                to={link.href}
                 onClick={closeMenu}
               >
                 {link.label}
-              </NavLink>
+              </Link>
             </li>
           ))}
         </ul>
 
         <div className="navbar__mobile-actions">
-          {/* Mobile theme toggle */}
+
+          {/* Mobile theme */}
           <button
             type="button"
             className="navbar__theme-toggle"
@@ -179,14 +180,15 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Mobile CTA */}
+          {/* Mobile Başla → Register */}
           <Link
-            to="/features"
+            to="/register"
             onClick={closeMenu}
             className="navbar__cta navbar__cta--block"
           >
             Başla <span>→</span>
           </Link>
+
         </div>
       </div>
     </header>
