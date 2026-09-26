@@ -6,10 +6,6 @@ export default function Hero() {
     <section className="hero" id="home">
       <div className="hero__inner">
         <div className="hero__copy">
-          <div className="hero__eyebrow">
-            <Sparkles size={16} />
-            Süni intellekt əsaslı ekoloji köməkçi
-          </div>
 
           <h1 className="hero__title">
             Bir şəkil yüklə,
@@ -58,9 +54,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hero__badge">
-            🌱 Ekoloji qərarlar üçün AI dəstəyi
-          </div>
+          
         </div>
       </div>
     </section>

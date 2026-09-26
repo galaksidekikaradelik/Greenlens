@@ -5,6 +5,7 @@
   background: var(--background);
   padding: 96px 24px;
   transition: var(--transition);
+  font-family: var(--font-main);
 }
 
 .hero__inner {
@@ -16,20 +17,7 @@
   align-items: center;
 }
 
-/* ---- Left column ---- */
 
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--primary);
-  font-size: 13px;
-  font-weight: 500;
-}
 
 .hero__title {
   margin: 24px 0 20px;

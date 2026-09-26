@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Menu,
   X,
@@ -6,16 +7,16 @@ import {
   Moon,
 } from "lucide-react";
 
-import "../style/index.css";
+import "../style/components/navbar.css";
 
 import logoLight from "../assets/logo.png";
 import logoDark from "../assets/logo-dark.png";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "Features", href: "#features" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", to: "/" },
+  { label: "Features", to: "/features" },
+  { label: "About", to: "/#about" },
+  { label: "Contact", to: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -54,18 +55,18 @@ export default function Navbar() {
       <nav className="navbar__inner">
 
         {/* Logo */}
-        <a href="#home" className="navbar__logo">
+        <Link to="/" className="navbar__logo">
           <img
             src={isDark ? logoDark : logoLight}
             alt="YaşılSkan"
           />
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <ul className="navbar__links">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a href={link.href}>{link.label}</a>
+              <Link to={link.to}>{link.label}</Link>
             </li>
           ))}
         </ul>
@@ -92,9 +93,9 @@ export default function Navbar() {
           </button>
 
           {/* CTA */}
-          <a href="#get-started" className="navbar__cta">
+          <Link to="/#get-started" className="navbar__cta">
             Başla <span>→</span>
-          </a>
+          </Link>
 
           {/* Mobile menu */}
           <button
@@ -121,12 +122,12 @@ export default function Navbar() {
         <ul className="navbar__mobile-links">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a
-                href={link.href}
+              <Link
+                to={link.to}
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -156,13 +157,13 @@ export default function Navbar() {
             )}
           </button>
 
-          <a
-            href="#get-started"
+          <Link
+            to="/#get-started"
             onClick={() => setIsOpen(false)}
             className="navbar__cta navbar__cta--block"
           >
             Başla <span>→</span>
-          </a>
+          </Link>
 
         </div>
       </div>

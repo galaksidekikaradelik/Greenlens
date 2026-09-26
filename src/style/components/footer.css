@@ -1,7 +1,7 @@
 .footer {
   padding: 64px 0 calc(32px + env(safe-area-inset-bottom, 0px));
-  background: var(--primary-dark);
-  color: var(--text-light);
+  background: var(--surface-dark);
+  color: var(--text-primary);
   transition: var(--transition);
 }
 
