@@ -1,5 +1,5 @@
 import { Recycle, Leaf, Sparkles } from "lucide-react";
-import "../style/components/hero.css";
+import "../style/index.css";
 
 export default function Hero() {
   return (

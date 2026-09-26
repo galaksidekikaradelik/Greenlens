@@ -1,32 +1,32 @@
 :root {
   /* Primary Colors */
-  --primary: #2E7D32;
-  --primary-light: #4CAF50;
-  --primary-dark: #1B5E20;
+  --primary: #2e7d32;
+  --primary-light: #4caf50;
+  --primary-dark: #1b5e20;
 
   /* Secondary */
-  --secondary: #00C853;
-  --accent: #AEEA00;
+  --secondary: #00c853;
+  --accent: #aeea00;
 
   /* Backgrounds */
-  --background: #F4F8F4;
-  --surface: #FFFFFF;
-  --surface-dark: #E8F5E9;
+  --background: #f4f8f4;
+  --surface: #ffffff;
+  --surface-dark: #e8f5e9;
 
   /* Text */
-  --text-primary: #1B1B1B;
-  --text-secondary: #5F6B61;
-  --text-light: #FFFFFF;
+  --text-primary: #1b1b1b;
+  --text-secondary: #5f6b61;
+  --text-light: #ffffff;
 
   /* Status Colors */
-  --success: #22C55E;
-  --warning: #FACC15;
-  --error: #EF4444;
-  --info: #3B82F6;
+  --success: #22c55e;
+  --warning: #facc15;
+  --error: #ef4444;
+  --info: #3b82f6;
 
   /* Borders */
-  --border: #DCE5DC;
-  --border-hover: #B8C8B8;
+  --border: #dce5dc;
+  --border-hover: #b8c8b8;
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -47,4 +47,39 @@
 
   /* Font */
   --font-main: "Inter", sans-serif;
+}
+
+
+/* =========================
+   DARK THEME
+========================= */
+
+:root.dark {
+  /* Primary */
+  --primary: #66bb6a;
+  --primary-light: #81c784;
+  --primary-dark: #a5d6a7;
+
+  /* Secondary */
+  --secondary: #00e676;
+  --accent: #c6ff00;
+
+  /* Backgrounds */
+  --background: #0c120d;
+  --surface: #131c14;
+  --surface-dark: #1b2a1c;
+
+  /* Text */
+  --text-primary: #f1f5f1;
+  --text-secondary: #a8b3a9;
+  --text-light: #ffffff;
+
+  /* Borders */
+  --border: #29372b;
+  --border-hover: #3d5140;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
 }

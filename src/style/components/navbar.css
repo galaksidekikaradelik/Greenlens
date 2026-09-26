@@ -2,51 +2,75 @@
   position: sticky;
   top: 0;
   z-index: 30;
+
   border-bottom: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.85);
+
+  background: color-mix(
+    in srgb,
+    var(--surface) 85%,
+    transparent
+  );
+
   backdrop-filter: blur(10px);
+
+  transition: var(--transition);
 }
 
 .navbar__inner {
   max-width: var(--container-width);
   margin: 0 auto;
+
   padding: 16px 28px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+
+/* =========================
+   LOGO
+========================= */
+
 .navbar__logo {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-main);
-  font-weight: 800;
-  font-size: 1.125rem;
-  color: var(--primary-dark);
+
   text-decoration: none;
 }
 
-.navbar__logo svg {
-  color: var(--primary);
+.navbar__logo img {
+  width: 140px;
+  height: auto;
+  display: block;
 }
+
+
+/* =========================
+   DESKTOP LINKS
+========================= */
 
 .navbar__links {
   display: flex;
   align-items: center;
   gap: 32px;
+
   list-style: none;
   margin: 0;
   padding: 0;
+
   font-family: var(--font-main);
   font-size: 0.875rem;
   font-weight: 500;
+
   color: var(--text-secondary);
 }
 
 .navbar__links a {
   text-decoration: none;
   color: inherit;
+
   transition: var(--transition);
 }
 
@@ -54,20 +78,76 @@
   color: var(--primary);
 }
 
+
+/* =========================
+   RIGHT ACTIONS
+========================= */
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+/* =========================
+   THEME TOGGLE
+========================= */
+
+.navbar__theme-toggle {
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: var(--surface);
+  color: var(--text-primary);
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.navbar__theme-toggle:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   CTA
+========================= */
+
 .navbar__cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+
   border-radius: 100px;
+
   background: var(--primary);
   color: var(--text-light);
+
   padding: 10px 20px;
+
   font-family: var(--font-main);
   font-size: 0.875rem;
   font-weight: 600;
+
   text-decoration: none;
+
   border: none;
   cursor: pointer;
+
   transition: var(--transition);
 }
 
@@ -76,19 +156,35 @@
   box-shadow: var(--shadow-md);
 }
 
+
+/* =========================
+   MOBILE TOGGLE
+========================= */
+
 .navbar__toggle {
   display: none;
+
   background: none;
   border: none;
+
   color: var(--text-primary);
+
   cursor: pointer;
   padding: 4px;
 }
 
+
+/* =========================
+   MOBILE MENU
+========================= */
+
 .navbar__mobile-menu {
   display: none;
+
   border-top: 1px solid var(--border);
+
   background: var(--surface);
+
   padding: 16px 28px;
 }
 
@@ -96,19 +192,25 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
   list-style: none;
+
   margin: 0 0 16px 0;
   padding: 0;
+
   font-family: var(--font-main);
   font-size: 0.875rem;
   font-weight: 500;
+
   color: var(--text-secondary);
 }
 
 .navbar__mobile-links a {
+  display: block;
+
   text-decoration: none;
   color: inherit;
-  display: block;
+
   transition: var(--transition);
 }
 
@@ -121,10 +223,17 @@
   justify-content: center;
 }
 
-/* Responsive breakpoint: below 768px, swap desktop nav for the mobile toggle/menu */
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media (max-width: 768px) {
-  .navbar__links,
-  .navbar__cta {
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__actions > .navbar__cta {
     display: none;
   }
 
@@ -135,11 +244,29 @@
   .navbar__mobile-menu.is-open {
     display: block;
   }
+
+  .navbar__mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar__mobile-actions .navbar__theme-toggle {
+    width: 100%;
+    border-radius: 10px;
+    gap: 8px;
+  }
 }
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
   .navbar__links a,
-  .navbar__cta {
+  .navbar__cta,
+  .navbar__theme-toggle {
     transition: none;
   }
 }

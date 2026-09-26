@@ -1,8 +1,10 @@
 import "./style/index.css";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
+import Navbar from "../src/components/Navbar";
+import Hero from "../src/components/Hero";
+import Features from "../src/components/Features";
+import HowItWorks from "../src/components/HowItWork";
+import Impact from "../src/components/Impact";
+import Stats from "../src/components/Stats";
 
 function App() {
   return (
@@ -12,6 +14,9 @@ function App() {
       <main>
         <Hero />
         <Features />
+        <HowItWorks />
+        <Impact />
+        <Stats />
         {/* About, Contact bölmələri buraya əlavə olunacaq */}
       </main>
     </div>

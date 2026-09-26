@@ -1,0 +1,159 @@
+.how {
+  padding: 72px 0;
+  background: var(--surface-dark);
+
+  transition: var(--transition);
+}
+
+.how__inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 28px;
+
+  text-align: center;
+}
+
+.how__head h2 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+
+  color: var(--text-primary);
+
+  margin: 0;
+}
+
+.how__head p {
+  margin-top: 12px;
+
+  font-family: var(--font-main);
+  font-size: 1rem;
+
+  color: var(--text-secondary);
+}
+
+.how__steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 8px;
+  margin-top: 44px;
+}
+
+.how__step-wrap {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+}
+
+.how__step {
+  width: 220px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.how__icon {
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+
+  background: var(--surface);
+  color: var(--primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 16px;
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition);
+}
+
+.how__step h3 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1.05rem;
+
+  color: var(--text-primary);
+
+  margin: 0 0 6px;
+}
+
+.how__step p {
+  font-family: var(--font-main);
+  font-size: 0.86rem;
+
+  color: var(--text-secondary);
+
+  margin: 0;
+}
+
+.how__arrow {
+  color: var(--border-hover);
+
+  margin-top: 18px;
+
+  transition: var(--transition);
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.how__step:hover .how__icon {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 760px) {
+  .how {
+    padding: 56px 0;
+  }
+
+  .how__inner {
+    padding: 0 20px;
+  }
+
+  .how__steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .how__arrow {
+    display: none;
+  }
+
+  .how__step {
+    width: min(100%, 320px);
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .how,
+  .how__icon,
+  .how__arrow {
+    transition: none;
+  }
+}

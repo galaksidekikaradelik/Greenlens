@@ -1,0 +1,206 @@
+.impact {
+  padding: 72px 0;
+  background: var(--background);
+
+  transition: var(--transition);
+}
+
+.impact__inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 28px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+
+/* =========================
+   IMPACT HERO
+========================= */
+
+.impact__hero {
+  background: linear-gradient(
+    150deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+
+  border-radius: var(--radius-lg);
+
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  min-height: 280px;
+
+  box-shadow: var(--shadow-md);
+
+  transition: var(--transition);
+}
+
+.impact__hero h2 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1.7rem;
+
+  max-width: 14ch;
+
+  color: var(--text-light);
+
+  margin: 0;
+}
+
+.impact__hero p {
+  margin-top: 12px;
+
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================
+   IMPACT CARD
+========================= */
+
+.impact__card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  padding: 26px;
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition);
+}
+
+.impact__card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.impact__icon {
+  width: 38px;
+  height: 38px;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--surface-dark);
+  color: var(--primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 16px;
+
+  transition: var(--transition);
+}
+
+.impact__card:hover .impact__icon {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   CARD TITLE
+========================= */
+
+.impact__card h3 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1.1rem;
+
+  color: var(--text-primary);
+
+  margin: 0 0 12px;
+}
+
+
+/* =========================
+   LIST
+========================= */
+
+.impact__list {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.impact__list li {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  font-family: var(--font-main);
+  font-size: 0.88rem;
+
+  color: var(--text-secondary);
+}
+
+.impact__list svg {
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  color: var(--primary);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .impact {
+    padding: 56px 0;
+  }
+
+  .impact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact__inner {
+    padding: 0 20px;
+  }
+
+  .impact__hero,
+  .impact__card {
+    padding: 24px;
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .impact,
+  .impact__hero,
+  .impact__card,
+  .impact__icon {
+    transition: none;
+  }
+}

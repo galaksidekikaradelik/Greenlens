@@ -1,5 +1,5 @@
 import { Recycle, Leaf, Check } from "lucide-react";
-import "../style/components/features.css";
+import "../style/index.css";
 
 const WASTE_POINTS = [
   "Material növünü tanıyır",
