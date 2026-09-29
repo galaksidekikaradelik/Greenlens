@@ -1,22 +1,19 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import {
   Mail,
   Lock,
-  User,
   ArrowRight,
   LoaderCircle,
 } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../style/pages/register.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export default function Register() {
-  const navigate = useNavigate();
-
+export default function Login() {
+    const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -40,13 +37,8 @@ export default function Register() {
     setError("");
     setSuccess("");
 
-    if (!form.name || !form.email || !form.password) {
-      setError("Bütün xanaları doldur.");
-      return;
-    }
-
-    if (form.password.length < 6) {
-      setError("Şifrə ən azı 6 simvoldan ibarət olmalıdır.");
+    if (!form.email || !form.password) {
+      setError("E-poçt və şifrəni daxil et.");
       return;
     }
 
@@ -54,14 +46,13 @@ export default function Register() {
 
     try {
       const response = await fetch(
-        `${API_URL}/api/auth/register`,
+        `${API_URL}/api/auth/login`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name: form.name,
             email: form.email,
             password: form.password,
           }),
@@ -74,7 +65,7 @@ export default function Register() {
         throw new Error(
           data?.message ||
             data?.error ||
-            "Qeydiyyat zamanı xəta baş verdi."
+            "E-poçt və ya şifrə yanlışdır."
         );
       }
 
@@ -93,16 +84,14 @@ export default function Register() {
         );
       }
 
-      setSuccess("Qeydiyyat uğurla tamamlandı.");
+      setSuccess("Uğurla daxil oldunuz.");
 
-      setForm({
-        name: "",
-        email: "",
-        password: "",
-      });
+        setForm({
+            email: "",
+            password: "",
+        });
 
-      navigate("/profile");
-      
+        navigate("/profile");
     } catch (err) {
       setError(
         err.message ||
@@ -123,24 +112,24 @@ export default function Register() {
           </span>
 
           <h1>
-            Təbiəti daha yaxşı
+            Yenidən
             <br />
-            tanımağa başla.
+            xoş gəldin.
           </h1>
 
           <p>
-            Hesab yarat və EcoScan ilə tullantılarını
-            və bitkilərini analiz etməyə başla.
+            Hesabına daxil ol və EcoScan ilə
+            analizlərinə davam et.
           </p>
         </div>
 
         <div className="register__card">
 
           <div className="register__card-header">
-            <h2>Hesab yarat</h2>
+            <h2>Daxil ol</h2>
 
             <p>
-              EcoScan hesabını yaratmaq üçün
+              EcoScan hesabına daxil olmaq üçün
               məlumatlarını daxil et.
             </p>
           </div>
@@ -149,27 +138,6 @@ export default function Register() {
             className="register__form"
             onSubmit={handleSubmit}
           >
-
-            {/* Name */}
-            <div className="register__field">
-              <label htmlFor="name">
-                Ad
-              </label>
-
-              <div className="register__input">
-                <User size={18} />
-
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Adınızı daxil edin"
-                  value={form.name}
-                  onChange={handleChange}
-                  autoComplete="name"
-                />
-              </div>
-            </div>
 
             {/* Email */}
             <div className="register__field">
@@ -208,26 +176,23 @@ export default function Register() {
                   placeholder="Şifrənizi daxil edin"
                   value={form.password}
                   onChange={handleChange}
-                  autoComplete="new-password"
+                  autoComplete="current-password"
                 />
               </div>
             </div>
 
-            {/* Error */}
             {error && (
               <div className="register__message register__message--error">
                 {error}
               </div>
             )}
 
-            {/* Success */}
             {success && (
               <div className="register__message register__message--success">
                 {success}
               </div>
             )}
 
-            {/* Submit */}
             <button
               type="submit"
               className="register__submit"
@@ -239,26 +204,17 @@ export default function Register() {
                     size={18}
                     className="register__spinner"
                   />
-                  Qeydiyyatdan keçirilir...
+                  Daxil olunur...
                 </>
               ) : (
                 <>
-                  Qeydiyyatdan keç
+                  Daxil ol
                   <ArrowRight size={18} />
                 </>
               )}
             </button>
 
           </form>
-
-          {/* Login link */}
-          <div className="register__login">
-            <span>Artıq hesabın var?</span>
-            <Link to="/login">
-              Daxil ol
-            </Link>
-          </div>
-
         </div>
       </div>
     </section>

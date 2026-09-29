@@ -9,6 +9,8 @@ import Features from "./pages/Features";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
 

@@ -1,165 +1,698 @@
-/* ===== EcoScan Hero ===== */
-/* Uses the design tokens from your :root / :root.dark variables file. */
+/* =========================================
+   ECOSCAN HERO
+========================================= */
 
 .hero {
-  background: var(--background);
-  padding: 96px 24px;
-  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+
+  padding: 88px 24px 92px;
+
+  background:
+    radial-gradient(
+      circle at 85% 25%,
+      color-mix(in srgb, var(--primary) 9%, transparent),
+      transparent 32%
+    ),
+    var(--background);
+
   font-family: var(--font-main);
+  transition: var(--transition);
 }
 
+/* subtle background glow */
+.hero::before {
+  content: "";
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  left: -180px;
+  top: -150px;
+
+  border-radius: 50%;
+
+  background: color-mix(
+    in srgb,
+    var(--primary) 5%,
+    transparent
+  );
+
+  filter: blur(10px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   LAYOUT
+========================================= */
+
 .hero__inner {
+  position: relative;
+  z-index: 1;
+
   max-width: var(--container-width);
   margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 64px;
+  grid-template-columns: 1.05fr 0.95fr;
+
+  gap: 72px;
+
   align-items: center;
 }
 
 
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.hero__copy {
+  max-width: 620px;
+}
+
+
+/* EYEBROW */
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+
+  color: var(--primary);
+}
+
+.hero__eyebrow svg {
+  flex-shrink: 0;
+}
+
+
+/* TITLE */
 
 .hero__title {
-  margin: 24px 0 20px;
-  font-size: 48px;
-  line-height: 1.1;
+  margin: 20px 0 22px;
+
+  max-width: 650px;
+
+  font-size: clamp(3rem, 5.2vw, 4.65rem);
+  line-height: 0.98;
+
   font-weight: 700;
+
+  letter-spacing: -0.045em;
+
   color: var(--text-primary);
-  letter-spacing: -0.01em;
 }
 
+.hero__title span {
+  color: var(--primary);
+}
+
+
+/* LEAD */
+
 .hero__lead {
-  max-width: 480px;
-  font-size: 17px;
-  line-height: 1.65;
+  max-width: 540px;
+
+  margin: 0;
+
+  font-size: 1rem;
+  line-height: 1.75;
+
   color: var(--text-secondary);
 }
+
+
+/* =========================================
+   CTA
+========================================= */
 
 .hero__ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 36px;
+
+  gap: 12px;
+
+  margin-top: 32px;
 }
 
-.btn {
+.hero .btn {
+  min-height: 48px;
+
   display: inline-flex;
   align-items: center;
-  padding: 13px 26px;
-  border-radius: var(--radius-sm);
-  font-size: 15px;
-  font-weight: 500;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 0 19px;
+
+  border-radius: 999px;
+
+  font-family: var(--font-main);
+
+  font-size: 0.87rem;
+  font-weight: 700;
+
   text-decoration: none;
-  transition: var(--transition);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.btn--primary {
+
+/* PRIMARY */
+
+.hero .btn--primary {
   background: var(--primary);
-  color: var(--text-light);
+  color: #fff;
+
+  border: 1px solid var(--primary);
+
   box-shadow: var(--shadow-sm);
 }
 
-.btn--primary:hover {
+.hero .btn--primary:hover {
   background: var(--primary-dark);
+
+  transform: translateY(-2px);
+
   box-shadow: var(--shadow-md);
 }
 
-.btn--outline {
-  background: transparent;
-  color: var(--primary);
-  border: 1px solid var(--border-hover);
-}
 
-.btn--outline:hover {
-  border-color: var(--primary);
-}
+/* OUTLINE */
 
-/* ---- Right column: demo card ---- */
-
-.hero__card {
-  position: relative;
-  background: var(--surface-dark);
-  border-radius: var(--radius-lg);
-  padding: 40px 32px 32px;
-  box-shadow: var(--shadow-md);
-}
-
-/* viewfinder corners, echoing the logo mark */
-.hero__card::before,
-.hero__card::after {
-  content: "";
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  border: 3px solid var(--primary);
-}
-
-.hero__card::before {
-  top: 14px;
-  left: 14px;
-  border-right: none;
-  border-bottom: none;
-  border-radius: var(--radius-sm) 0 0 0;
-}
-
-.hero__card::after {
-  bottom: 14px;
-  right: 14px;
-  border-left: none;
-  border-top: none;
-  border-radius: 0 0 var(--radius-sm) 0;
-}
-
-.hero__card-tag {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-}
-
-.hero__choices {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.hero__choice {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
+.hero .btn--outline {
   background: var(--surface);
+
+  color: var(--text-primary);
+
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 18px;
+}
+
+.hero .btn--outline:hover {
+  border-color: var(--primary);
+
   color: var(--primary);
-  transition: var(--transition);
+
+  transform: translateY(-2px);
 }
 
-.hero__choice:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-sm);
+
+/* =========================================
+   SMALL NOTE
+========================================= */
+
+.hero__note {
+  margin-top: 22px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 0.78rem;
+
+  color: var(--text-secondary);
 }
 
-.hero__choice b {
-  font-size: 15px;
+.hero__note svg {
+  color: var(--primary);
+}
+
+
+/* =========================================
+   RIGHT VISUAL
+========================================= */
+
+.hero__visual {
+  position: relative;
+
+  min-height: 440px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* BACKGROUND GLOW */
+
+.hero__visual-glow {
+  position: absolute;
+
+  width: 390px;
+  height: 390px;
+
+  border-radius: 50%;
+
+  background: color-mix(
+    in srgb,
+    var(--primary) 11%,
+    transparent
+  );
+
+  filter: blur(65px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   ECOSCAN APP MOCKUP
+========================================= */
+
+.hero__app {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 510px;
+
+  overflow: hidden;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: 22px;
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.08),
+    var(--shadow-md);
+
+  transform: rotate(1deg);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hero__app:hover {
+  transform: rotate(0deg) translateY(-3px);
+
+  box-shadow:
+    0 34px 80px rgba(0, 0, 0, 0.11),
+    var(--shadow-md);
+}
+
+
+/* =========================================
+   APP TOP
+========================================= */
+
+.hero__app-top {
+  min-height: 62px;
+
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.hero__app-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 0.84rem;
+  font-weight: 700;
+
   color: var(--text-primary);
 }
 
-.hero__choice span {
-  font-size: 13.5px;
-  line-height: 1.5;
+.hero__app-logo {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+  color: #fff;
+}
+
+.hero__app-status {
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  background: var(--surface-dark);
+
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  color: var(--primary);
+
+  letter-spacing: 0.03em;
+}
+
+
+/* =========================================
+   APP CONTENT
+========================================= */
+
+.hero__app-content {
+  padding: 34px 30px 32px;
+}
+
+.hero__app-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 0.73rem;
+  font-weight: 600;
+
   color: var(--text-secondary);
 }
 
-.hero__badge {
-  margin-top: 20px;
-  font-size: 13.5px;
+.hero__app-content h3 {
+  margin: 0 0 24px;
+
+  font-size: 1.35rem;
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+
+  color: var(--text-primary);
+}
+
+
+/* =========================================
+   APP OPTIONS
+========================================= */
+
+.hero__app-options {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 14px;
+}
+
+.hero__app-option {
+  position: relative;
+
+  min-height: 190px;
+
+  padding: 22px 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background: var(--background);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.hero__app-option:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--primary);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-md);
+}
+
+
+/* OPTION ICON */
+
+.hero__app-option-icon {
+  width: 48px;
+  height: 48px;
+
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: var(--surface-dark);
+
   color: var(--primary);
-  background: color-mix(in srgb, var(--accent) 18%, transparent);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  text-align: center;
+}
+
+
+/* OPTION TEXT */
+
+.hero__app-option strong {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  color: var(--text-primary);
+}
+
+.hero__app-option > span {
+  max-width: 155px;
+
+  font-size: 0.75rem;
+  line-height: 1.5;
+
+  color: var(--text-secondary);
+}
+
+
+/* ARROW */
+
+.hero__app-option-arrow {
+  position: absolute;
+
+  right: 14px;
+  bottom: 14px;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  color: var(--primary);
+
+  transition: var(--transition);
+}
+
+.hero__app-option:hover .hero__app-option-arrow {
+  background: var(--primary);
+  color: #fff;
+
+  border-color: var(--primary);
+}
+
+
+/* =========================================
+   APP BOTTOM
+========================================= */
+
+.hero__app-bottom {
+  min-height: 50px;
+
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  border-top: 1px solid var(--border);
+
+  font-size: 0.7rem;
+
+  color: var(--text-secondary);
+}
+
+.hero__pulse {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  box-shadow:
+    0 0 0 4px
+    color-mix(
+      in srgb,
+      var(--primary) 12%,
+      transparent
+    );
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 980px) {
+  .hero {
+    padding: 72px 24px;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .hero__copy {
+    max-width: 720px;
+  }
+
+  .hero__lead {
+    max-width: 620px;
+  }
+
+  .hero__visual {
+    min-height: auto;
+
+    justify-content: flex-start;
+  }
+
+  .hero__app {
+    max-width: 600px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 58px 20px 64px;
+  }
+
+  .hero__inner {
+    gap: 42px;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.62rem;
+  }
+
+  .hero__title {
+    margin-top: 17px;
+
+    font-size: clamp(2.55rem, 12vw, 3.4rem);
+
+    line-height: 1.02;
+  }
+
+  .hero__lead {
+    font-size: 0.92rem;
+
+    line-height: 1.65;
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+  }
+
+  .hero .btn {
+    width: 100%;
+  }
+
+  .hero__note {
+    align-items: flex-start;
+
+    line-height: 1.5;
+  }
+
+  .hero__visual {
+    width: 100%;
+  }
+
+  .hero__app {
+    transform: none;
+
+    border-radius: 18px;
+  }
+
+  .hero__app:hover {
+    transform: none;
+  }
+
+  .hero__app-content {
+    padding: 27px 20px;
+  }
+
+  .hero__app-options {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__app-option {
+    min-height: 160px;
+  }
+
+  .hero__app-option > span {
+    max-width: 230px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__app,
+  .hero__app-option,
+  .hero__app-option-arrow,
+  .hero .btn {
+    transition: none;
+  }
+
+  .hero__app:hover,
+  .hero__app-option:hover,
+  .hero .btn:hover {
+    transform: none;
+  }
 }
 
 /* ---- Mobile ---- */

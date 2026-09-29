@@ -1,6 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import {
+  Link,
+  useLocation,
+} from "react-router-dom";
+import {
+  Menu,
+  X,
+  Sun,
+  Moon,
+  User,
+} from "lucide-react";
 
 import "../style/components/navbar.css";
 
@@ -15,9 +24,13 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
+  const location = useLocation();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [user, setUser] = useState(null);
 
+  // Theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
 
@@ -29,6 +42,26 @@ export default function Navbar() {
       document.documentElement.classList.remove("dark");
     }
   }, []);
+
+  // Login vəziyyətini yoxlayırıq
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
+
+    if (!token || !storedUser) {
+      setUser(null);
+      return;
+    }
+
+    try {
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser);
+    } catch {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setUser(null);
+    }
+  }, [location.pathname]);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
@@ -105,20 +138,41 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Başla → Register */}
-          <Link
-            to="/register"
-            className="navbar__cta"
-            onClick={closeMenu}
-          >
-            Başla <span>→</span>
-          </Link>
+          {/* Login olubsa profil, olmayıbsa Başla */}
+          {user ? (
+            <Link
+              to="/profile"
+              className="navbar__profile"
+              onClick={closeMenu}
+            >
+              <span className="navbar__profile-icon">
+                <User
+                  size={17}
+                  strokeWidth={2}
+                />
+              </span>
 
-          {/* Mobile menu */}
+              <span className="navbar__profile-name">
+                {user.name || "Profil"}
+              </span>
+            </Link>
+          ) : (
+            <Link
+              to="/register"
+              className="navbar__cta"
+              onClick={closeMenu}
+            >
+              Başla <span>→</span>
+            </Link>
+          )}
+
+          {/* Mobile menu button */}
           <button
             type="button"
             className="navbar__toggle"
-            onClick={() => setIsOpen((prev) => !prev)}
+            onClick={() =>
+              setIsOpen((prev) => !prev)
+            }
             aria-label={
               isOpen
                 ? "Menyunu bağla"
@@ -180,14 +234,33 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Mobile Başla → Register */}
-          <Link
-            to="/register"
-            onClick={closeMenu}
-            className="navbar__cta navbar__cta--block"
-          >
-            Başla <span>→</span>
-          </Link>
+          {/* Mobile profile / register */}
+          {user ? (
+            <Link
+              to="/profile"
+              onClick={closeMenu}
+              className="navbar__profile navbar__profile--block"
+            >
+              <span className="navbar__profile-icon">
+                <User
+                  size={17}
+                  strokeWidth={2}
+                />
+              </span>
+
+              <span>
+                {user.name || "Profil"}
+              </span>
+            </Link>
+          ) : (
+            <Link
+              to="/register"
+              onClick={closeMenu}
+              className="navbar__cta navbar__cta--block"
+            >
+              Başla <span>→</span>
+            </Link>
+          )}
 
         </div>
       </div>
